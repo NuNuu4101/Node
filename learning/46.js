@@ -1,0 +1,12 @@
+const fs = require("node:fs")
+
+fs.readFile(__filename, () => {
+  console.log("readFile 1")
+})
+
+process.nextTick(() => console.log("nextTick 1"))
+Promise.resolve().then(() => console.log("promise 1"))
+setTimeout(() => console.log("setTimeout 1"), 0)
+setImmediate(()=>console.log("setImmediate 1"))
+
+for (let i = 0; i < 20000000; i++) {}
